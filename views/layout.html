@@ -1,0 +1,30 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}WikiStack{% endblock %}</title>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				
+				<a class="navbar-brand" id="logo" href="/">WIKISTACKS</a>
+				<a class="navbar-text" id ="add-page" href="/add">Create Page</a>
+				<a class="navbar-text" id ="tags-page" href="/tags">View Tags</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="container">
+		{% block heading %}{% endblock %}
+		{% block content %}{% endblock %}
+
+	</div>
+
+</body>
+</html>

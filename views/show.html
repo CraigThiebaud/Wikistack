@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block heading %}
+<h2>{{body.title}}</h2>
+{% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<p>{{body.body|marked}}</p>
+		<p>
+		{% for tag in body.tags%}
+		#{{tag|tag_link}}&nbsp; 
+		{% endfor %}
+		</p>
+	</div>
+</div>
+    
+{% endblock %}

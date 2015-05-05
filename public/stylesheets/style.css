@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font: 14px "Raleway", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #17C2FF;
+}
+ul li a {
+  color: #17C2FF;
+}
+a:hover{
+	text-decoration:none;
+}
+nav{
+	background-color: #333333 !important; 
+	padding:5px; 
+	padding-left:4em;
+}
+nav a{
+	color:#CECECE!important;
+}
+#logo{
+	font-size:1.5em; 
+	font-weight:bold;
+}
+.container{
+	margin-top:3%; 
+}
