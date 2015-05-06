@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 {% block heading %}
 <h2>Edit Page</h2>
@@ -20,5 +21,20 @@
   </div>
   <button type="submit" class="btn btn-danger">Save Changes</button>
 </form>
-    
+<div class="row">
+<h3>Versions</h3>
+  <div id= "versionsTimeline">
+  </div>
+</div>
+<script>
+  var container = document.getElementById('versionsTimeline'); 
+  var data = new vis.DataSet([{% for version in versions %}
+    {id:'{{version.id}}',
+    content:'{{version.title}}',
+    start:new Date('{{version.date.toString()}}')
+  },
+  {% endfor %}]);
+  var options ={}; 
+  var timeline = new vis.Timeline(container,data,options);  
+</script>
 {% endblock %}

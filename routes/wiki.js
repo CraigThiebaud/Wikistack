@@ -26,16 +26,17 @@ router.get("/:urlname/edit", function(req, res, next) {
 	var url = req.params.urlname;
 	models.Page.findOne({
 		url_name: url
-	}).then(function(page) {
+	}).populate("versions").then(function(page) {
+		console.log(page.versions[0].date); 
 		var versions = page.versions;
 		var latestVersion = versions.pop();
 
 		models.Page.findOne({
 			_id: latestVersion
 		}).populate("tags").exec().then(function(latestPage) {
-
 			res.render('edit', {
-				page: latestPage
+				page: latestPage,
+				versions: page.versions
 			})
 		})
 	});
