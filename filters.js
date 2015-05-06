@@ -21,6 +21,20 @@ module.exports = function(swig) {
   page_link.safe = true;
   swig.setFilter('page_link', page_link);
 
+  var edit_link = function (doc) {
+    var link_name;
+    if (typeof doc.title !== "undefined" && doc.title !== "") {
+      link_name = doc.title
+    } else {
+      link_name = "Page "+doc.url_name;
+
+    }
+    return doc.edit_route;
+  };
+
+  edit_link.safe = true;
+  swig.setFilter('edit_link', edit_link);
+
   var tag_link = function (tag) {
     var link_name;
     if (typeof tag.tagName !== "undefined" && tag.tagName !== "") {

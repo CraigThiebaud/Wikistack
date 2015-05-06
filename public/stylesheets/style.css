@@ -9,6 +9,7 @@ a {
 }
 ul li a {
   color: #17C2FF;
+  font-size: 1.3em; 
 }
 a:hover{
 	text-decoration:none;

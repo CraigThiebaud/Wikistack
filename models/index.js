@@ -13,16 +13,21 @@ var pageSchema = new mongoose.Schema({
   body:     String,
   date:     { type: Date, default: Date.now },
   status:   Number,
-  tags:     [{type: Schema.Types.ObjectId, ref: 'Tag'}]
+  tags:     [{type: Schema.Types.ObjectId, ref: 'Tag'}],
+  versions: [{type: Schema.Types.ObjectId, ref: 'Page'}]
 });
 
 pageSchema.virtual('full_route').get(function(){
   return "/wiki/" + this.url_name;
 })
+pageSchema.virtual('edit_route').get(function(){
+  return "/wiki/" + this.url_name+"/edit/";
+})
 
 var tagSchema = new mongoose.Schema({
   tagName:  String,
 })
+
 tagSchema.statics.findOrCreate=function(tagName){
   var self = this; 
   return self.findOne({tagName:tagName}).exec().then(function(found){

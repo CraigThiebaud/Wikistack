@@ -18,19 +18,24 @@ router.post('/submit', function(req, res) {
 		return models.Tag.findOrCreate(tag);
 	});
 	Promise.all(promisesArr).then(function(foundTags){
-		console.log(foundTags); 
+		// console.log(foundTags); 
 		var tagsIds = foundTags.map(function(cur){
 			return cur._id;
 		})
 		page.tags = tagsIds;
-		page.save(function(err,result){
-			// console.log("this is the save result",result); 
-			res.redirect('/'); 
-			// models.Page.findById(result._id).populate("tags").exec().then(function(popTag){
-			// 	console.log("this is populated tag",popTag);
-			// 	res.redirect('/'); 
-			// }); 
-		});
+		page.save(function(err,result){ 
+			// models.Page.update({_id:result._id},
+			// 	{$push:{versions:result._id}},
+			// 	function(updateError,updateRes){
+			// 		res.redirect('/'); 
+			// 	});
+			// });
+		models.Page.findByIdAndUpdate(result._id,
+			{$push:{versions:result._id}}
+			).then(function(err,updateResults){
+				res.redirect('/'); 
+			});
+		}); 
 	});
 });
 module.exports = router;
