@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha"
   },
   "dependencies": {
     "bluebird": "^2.9.25",
@@ -16,5 +17,12 @@
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
     "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-spies": "^0.6.0",
+    "chai-things": "^0.2.0",
+    "mocha": "^2.2.4",
+    "supertest": "^0.15.0"
   }
 }
