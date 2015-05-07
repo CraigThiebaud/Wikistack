@@ -1,2 +1,10 @@
-.DS_Store
 node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+dist
+/server/config/local.env.js
+.DS_Store
+npm-debug.log
